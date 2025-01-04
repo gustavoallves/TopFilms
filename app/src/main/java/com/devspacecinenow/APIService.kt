@@ -1,6 +1,5 @@
 package com.devspacecinenow
 
-import android.graphics.Movie
 import retrofit2.Call
 import retrofit2.http.GET
 
