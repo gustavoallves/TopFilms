@@ -86,11 +86,9 @@ class MainActivity : ComponentActivity() {
                             text = "CineNow"
                         )
 
-                        MovieSession(
-                            label = "Now Playing",
+                        MovieSession(label = "Now Playing",
                             movieList = nowPlayingMovies,
-                            onClick = {
-                            })
+                            onClick = {})
                     }
                 }
             }
@@ -136,8 +134,8 @@ fun MovieItem(
 
     Column(modifier = Modifier
         .width(IntrinsicSize.Min)
-        .clickable
-        { onClick.invoke(movieDto)
+        .clickable {
+            onClick.invoke(movieDto)
         }) {
         AsyncImage(
             modifier = Modifier
@@ -158,9 +156,7 @@ fun MovieItem(
             text = movieDto.title
         )
         Text(
-            overflow = TextOverflow.Ellipsis,
-            maxLines = 2,
-            text = movieDto.overview
+            overflow = TextOverflow.Ellipsis, maxLines = 2, text = movieDto.overview
 
         )
     }
