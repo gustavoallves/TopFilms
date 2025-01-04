@@ -1,11 +1,14 @@
 package com.devspacecinenow
 
-import kotlinx.serialization.SerialName
+import com.google.gson.annotations.SerializedName
 
 data class MovieDto(
-    val id: String,
+    val id: Int,
     val title: String,
     val overview: String,
-    @SerialName("poster_path")
+    @SerializedName("poster_path")
     val postPath: String,
-)
+) {
+    val posterFullPath: String
+        get() = "https://image.tmdb.org/t/p/w300$postPath"
+}
