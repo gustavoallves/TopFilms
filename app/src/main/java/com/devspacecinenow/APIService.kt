@@ -8,4 +8,12 @@ interface APIService {
     @GET("now_playing?language=en-US&page=1")
     fun getNowPlayingMovies() : Call<MovieResponse>
 
+    @GET("popular?language=en-US&page=1")
+    fun getPopularMovies() : Call<MovieResponse>
+
+    @GET("top_rated?language=en-US&page=1")
+    fun getTopRatedMovies() : Call<MovieResponse>
+
+    @GET("upcoming?language=en-US&page=1")
+    fun getUpcomingMovies() : Call<MovieResponse>
 }
