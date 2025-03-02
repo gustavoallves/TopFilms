@@ -1,4 +1,4 @@
-package com.devspacecinenow
+package com.devspacecinenow.list.presentation.ui
 
 import android.util.Log
 import androidx.compose.foundation.clickable
@@ -29,6 +29,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
+import com.devspacecinenow.APIService
+import com.devspacecinenow.common.MovieDto
+import com.devspacecinenow.common.MovieResponse
+import com.devspacecinenow.common.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

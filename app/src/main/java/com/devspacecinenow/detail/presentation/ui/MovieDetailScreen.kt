@@ -1,7 +1,6 @@
-package com.devspacecinenow
+package com.devspacecinenow.detail.presentation.ui
 
 import android.util.Log
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -25,6 +24,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
+import com.devspacecinenow.APIService
+import com.devspacecinenow.common.MovieDto
+import com.devspacecinenow.common.RetrofitClient
 import retrofit2.Call
 import retrofit2.Response
 
