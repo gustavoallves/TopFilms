@@ -31,12 +31,12 @@ import com.devspacecinenow.list.presentation.MovieListViewModel
 
 @Composable
 fun MovieListScreen(
-    navController: NavHostController, viewModel: MovieListViewModel
+    navController: NavHostController, listViewModel: MovieListViewModel
 ) {
-    val nowPlayingMovies by viewModel.uiNowPlayingMovies.collectAsState()
-    val popularMovies by viewModel.uiPopularMovies.collectAsState()
-    val topRatedMovies by viewModel.uiTopRatedMovies.collectAsState()
-    val upcomingMovies by viewModel.uiUpcomingMovies.collectAsState()
+    val nowPlayingMovies by listViewModel.uiNowPlayingMovies.collectAsState()
+    val popularMovies by listViewModel.uiPopularMovies.collectAsState()
+    val topRatedMovies by listViewModel.uiTopRatedMovies.collectAsState()
+    val upcomingMovies by listViewModel.uiUpcomingMovies.collectAsState()
 
     MovieListContent(
         nowPlayingMovies = nowPlayingMovies,

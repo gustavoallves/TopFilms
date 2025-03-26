@@ -13,6 +13,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -24,36 +25,20 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
-import com.devspacecinenow.APIService
 import com.devspacecinenow.common.MovieDto
 import com.devspacecinenow.common.RetrofitClient
+import com.devspacecinenow.detail.presentation.MovieDetailViewModel
 import retrofit2.Call
 import retrofit2.Response
 
 @Composable
 fun MovieDetailScreen(
     movieId: String,
-    navController: NavController
+    navController: NavController,
+    detailViewModel: MovieDetailViewModel
 ) {
-    var movieDto by remember { mutableStateOf<MovieDto?>(null) }
-
-    val apiService = RetrofitClient.retrofitInstance.create(APIService::class.java)
-
-    apiService.getMovieById(movieId).enqueue(
-        object : retrofit2.Callback<MovieDto> {
-            override fun onResponse(call: Call<MovieDto>, response: Response<MovieDto>) {
-                if (response.isSuccessful) {
-                    movieDto = response.body()
-                } else {
-                    Log.d("MainActivity", "Request Error :: ${response.errorBody()}")
-                }
-            }
-
-            override fun onFailure(call: Call<MovieDto>, t: Throwable) {
-                Log.d("MainActivity", "Network Error :: ${t.message}")
-            }
-        }
-    )
+    val movieDto by detailViewModel.uiMovieDetail.collectAsState()
+    detailViewModel.fetchMovieDetail(movieId)
 
     movieDto?.let {
         Column(modifier = Modifier.fillMaxSize()) {
@@ -63,10 +48,11 @@ fun MovieDetailScreen(
             ) {
                 IconButton(onClick = {
                     navController.popBackStack()
+                    detailViewModel.cleanMovieId()
                 }) {
                     Icon(
                         imageVector = Icons.Filled.ArrowBack,
-                        contentDescription = "Back button"
+                        contentDescription = "Back button",
                     )
                 }
 
